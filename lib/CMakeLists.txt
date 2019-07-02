@@ -9,8 +9,8 @@ add_library(${lib} ${src_files})
 set_target_properties(
     ${lib} PROPERTIES
     OUTPUT_NAME ${lib}
-    VERSION ${lmfit_VERSION_MAJOR}
-    SOVERSION ${lmfit_VERSION_MINOR})
+    VERSION ${lmfit_VERSION}
+    SOVERSION ${lmfit_VERSION_MAJOR})
 
 include(LinkLibMath)
 link_libm(${lib})
