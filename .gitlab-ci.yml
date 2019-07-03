@@ -2,7 +2,8 @@ stages:
   - build
 
 debS_clang:
-  tags: *unix
+  tags: &unix
+  - Linux
   image: debian:stable
   before_script: &debian_clang
     - apt-get -y update
@@ -18,21 +19,13 @@ debS_clang:
     - ctest --output-on-failure
 
 debS_gcc:
-  tags: &unix
-  - Linux
+  tags: *unix
   image: debian:stable
   before_script: &debian_gcc
     - apt-get -y update
     - apt-get -y upgrade
     - apt-get -y install cmake perl
     - apt-get -y install g++
-  stage: build
-  script: *scr
-
-debT_gcc:
-  tags: *unix
-  image: debian:testing
-  before_script: *debian_gcc
   stage: build
   script: *scr
 
@@ -43,9 +36,9 @@ debT_clang:
   stage: build
   script: *scr
 
-debU_gcc:
+debT_gcc:
   tags: *unix
-  image: debian:unstable
+  image: debian:testing
   before_script: *debian_gcc
   stage: build
   script: *scr
@@ -54,6 +47,13 @@ debU_clang:
   tags: *unix
   image: debian:unstable
   before_script: *debian_clang
+  stage: build
+  script: *scr
+
+debU_gcc:
+  tags: *unix
+  image: debian:unstable
+  before_script: *debian_gcc
   stage: build
   script: *scr
 
