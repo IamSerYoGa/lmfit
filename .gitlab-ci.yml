@@ -142,4 +142,4 @@ windows:
     - dir
     - dir Release
     - ctest -C Release --output-on-failure
-    - cmake --install
+    - cmake --install .
