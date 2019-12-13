@@ -142,3 +142,4 @@ windows:
     - dir
     - dir Release
     - ctest -C Release --output-on-failure
+    - cmake --install C:\opt\x64
