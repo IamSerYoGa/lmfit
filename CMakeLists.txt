@@ -13,9 +13,6 @@ endif()
 if(NOT DEFINED LIB_MAN)
     option(LIB_MAN "Build library man pages" ON)
 endif()
-if(NOT DEFINED LIB_INSTALL)
-    option(LIB_INSTALL "Install library" ON)
-endif()
 
 set(CMAKE_C_STANDARD 99)
 
@@ -40,12 +37,10 @@ endif()
 
 include(CTest)
 
-if(LIB_INSTALL)
-    set(destination ${CMAKE_INSTALL_PREFIX})
-    configure_file("lmfit.pc.in" "lmfit.pc" @ONLY)
-    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lmfit.pc"
-        DESTINATION "${destination}/lib/pkgconfig/")
-endif()
+set(destination ${CMAKE_INSTALL_PREFIX})
+configure_file("lmfit.pc.in" "lmfit.pc" @ONLY)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lmfit.pc"
+    DESTINATION "${destination}/lib/pkgconfig/")
 
 add_subdirectory(lib)
 add_subdirectory(demo)
