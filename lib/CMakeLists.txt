@@ -19,6 +19,7 @@ install(
     TARGETS ${lib}
     LIBRARY DESTINATION ${destination}/lib
     RUNTIME DESTINATION ${destination}/lib
+    ARCHIVE DESTINATION ${destination}/lib
     COMPONENT Libraries)
 install(
     FILES ${inc_files}
