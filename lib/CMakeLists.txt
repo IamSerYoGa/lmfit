@@ -6,6 +6,8 @@ set(inc_files lmcurve.h lmmin.h lmstruct.h)
 
 add_library(${lib} ${src_files})
 
+target_compile_definitions(${lib} PRIVATE "LMFIT_EXPORT") # for Windows DLL export&import
+
 set_target_properties(
     ${lib} PROPERTIES
     OUTPUT_NAME ${lib}

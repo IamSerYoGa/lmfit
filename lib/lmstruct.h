@@ -26,11 +26,13 @@
 __BEGIN_DECLS
 
 #if _WIN32
-#define LM_EXPORT __declspec(dllexport)
-#define LM_IMPORT __declspec(dllimport)
+#ifdef LMFIT_EXPORT
+#define LM_DLL __declspec(dllexport)
 #else
-#define LM_EXPORT
-#define LM_IMPORT
+#define LM_DLL __declspec(dllimport)
+#endif
+#else
+#define LM_DLL
 #endif
 
 #include <stdio.h>
@@ -77,13 +79,13 @@ typedef struct {
 } lm_status_struct;
 
 /* Preset (and recommended) control parameter settings. */
-LM_IMPORT extern const lm_control_struct lm_control_double;
-LM_IMPORT extern const lm_control_struct lm_control_float;
+LM_DLL extern const lm_control_struct lm_control_double;
+LM_DLL extern const lm_control_struct lm_control_float;
 
 /* Preset message texts. */
 
-LM_IMPORT extern const char* lm_infmsg[];
-LM_IMPORT extern const char* lm_shortmsg[];
+LM_DLL extern const char* lm_infmsg[];
+LM_DLL extern const char* lm_shortmsg[];
 
 __END_DECLS
 #endif /* LMSTRUCT_H */
