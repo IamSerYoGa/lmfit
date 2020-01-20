@@ -1,10 +1,11 @@
-cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
-cmake_policy(SET CMP0048 NEW)
+cmake_minimum_required(VERSION 3.6 FATAL_ERROR)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 include(PreventInSourceBuilds)
 
 project(lmfit VERSION 8.2.1 LANGUAGES C)
+
+## Options.
 
 option(FITTEST "Build with FitTest" OFF)
 if(NOT DEFINED BUILD_SHARED_LIBS)
@@ -13,34 +14,35 @@ endif()
 if(NOT DEFINED LIB_MAN)
     option(LIB_MAN "Build library man pages" ON)
 endif()
+option(PEDANTIC "Compile with pedantic warnings" ON)
+option(WERROR "Treat warnings as errors" OFF)
+
+## Compiler settings.
 
 set(CMAKE_C_STANDARD 99)
 
-if(MSVC)
+if(WIN32)
     set(CTEST_CONFIGURATION_TYPE "${JOB_BUILD_CONFIGURATION}")
     if(BUILD_SHARED_LIBS)
         set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
     endif()
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
-    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
-else()
-    option(PEDANTIC "Compile with pedantic warnings" ON)
-    option(WERROR "Treat warnings as errors" OFF)
-    add_compile_options(-O2)
-    if(PEDANTIC)
-        add_compile_options(-pedantic -Wall)
-    endif()
-    if(WERROR)
-        add_compile_options(-Werror)
-    endif()
+endif()
+add_compile_options(-O2)
+if(PEDANTIC)
+    add_compile_options(-pedantic -Wall)
+endif()
+if(WERROR)
+    add_compile_options(-Werror)
 endif()
 
-include(CTest)
+## Install settings.
 
 set(destination ${CMAKE_INSTALL_PREFIX})
 configure_file("lmfit.pc.in" "lmfit.pc" @ONLY)
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lmfit.pc"
     DESTINATION "${destination}/lib/pkgconfig/")
+
+include(CTest)
 
 add_subdirectory(lib)
 add_subdirectory(demo)
