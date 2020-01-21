@@ -12,7 +12,7 @@
  * Homepage:  apps.jcns.fz-juelich.de/lmfit
  */
 
-#include "decls.h"
+#include "lmdecls.h"
 
 LM_DLL void lm_invert(double *const A, const int n, int *const P, double *const ws,
                double *const IA, int*const failure);

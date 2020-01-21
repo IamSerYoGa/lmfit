@@ -15,7 +15,7 @@
 #ifndef LMSTRUCT_H
 #define LMSTRUCT_H
 
-#include "decls.h"
+#include "lmdecls.h"
 #include <stdio.h>
 
 __BEGIN_DECLS
