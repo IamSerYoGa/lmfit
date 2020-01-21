@@ -24,7 +24,7 @@
 #define __END_DECLS   /* empty */
 #endif
 
-#if _WIN32
+#if WIN32
 #ifdef LMFIT_EXPORT
 #define LM_DLL __declspec(dllexport)
 #else
