@@ -35,6 +35,7 @@ endif()
 if(WERROR)
     add_compile_options(-Werror)
 endif()
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 ## Install settings.
 
