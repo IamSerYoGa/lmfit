@@ -86,5 +86,10 @@ LM_DLL void lmmin(
 LM_DLL double lm_enorm(const int, const double *const);
 LM_DLL double lm_fnorm(const int, const double *const, const double *const);
 
+/* Internal, exported for test/run_qr */
+LM_DLL void lm_qrfac(
+    const int m, const int n, double *const A, int *const Pivot,
+    double *const Rdiag, double *const Acnorm, double *const W);
+
 __END_DECLS
 #endif /* LMMIN_H */

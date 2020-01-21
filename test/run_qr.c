@@ -1,9 +1,6 @@
-#include "lmcurve.h"
+#include "lmmin.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-void lm_qrfac(int m, int n, double *a, int *ipvt,
-              double *rdiag, double *acnorm, double *wa);
 
 void set_orthogonal( int n, double *Q, double* v )
 {
