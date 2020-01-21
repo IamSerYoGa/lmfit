@@ -136,7 +136,7 @@ windows:
     - New-Item -ItemType "directory" -Confirm:$false -Force:$true -Name "build"
     - cd build
     # We want to compile with MinGW. Somehow this is accomplished by Ninja.
-    - cmake -G "Ninja" -DLIB_MAN=OFF -DCMAKE_INSTALL_PREFIX=C:\opt\x64 -B. ..
+    - cmake -G "Ninja" -DLIB_MAN=OFF -DCMAKE_INSTALL_PREFIX=C:\opt\x64 -B. -DCMAKE_GNUtoMS=ON ..
     - cmake --build . # --config Release
     - Get-Location
     - dir
