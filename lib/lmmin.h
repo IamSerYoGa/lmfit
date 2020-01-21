@@ -14,22 +14,13 @@
 
 #ifndef LMMIN_H
 #define LMMIN_H
-#undef __BEGIN_DECLS
-#undef __END_DECLS
-#ifdef __cplusplus
-#define __BEGIN_DECLS extern "C" {
-#define __END_DECLS }
-#else
-#define __BEGIN_DECLS /* empty */
-#define __END_DECLS   /* empty */
-#endif
 
 #include "lmstruct.h"
 
 __BEGIN_DECLS
 
 /* Levenberg-Marquardt minimization. */
-void lmmin2(
+LM_DLL void lmmin2(
     const int n_par, double *const par, double *const parerr, double *const covar,
     const int m_dat, const double *const y, const void *const data,
     void (*const evaluate)(
@@ -83,7 +74,7 @@ void lmmin2(
  */
 
 /* old, simpler interface, preserved for API compatibility */
-void lmmin(
+LM_DLL void lmmin(
     const int n_par, double *const par, const int m_dat, const double *const y,
     const void *const data,
     void (*const evaluate)(
@@ -92,8 +83,8 @@ void lmmin(
     const lm_control_struct *const control, lm_status_struct *const status);
 
 /* Refined calculation of Eucledian norm. */
-double lm_enorm(const int, const double *const);
-double lm_fnorm(const int, const double *const, const double *const);
+LM_DLL double lm_enorm(const int, const double *const);
+LM_DLL double lm_fnorm(const int, const double *const, const double *const);
 
 __END_DECLS
 #endif /* LMMIN_H */

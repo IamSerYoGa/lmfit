@@ -14,28 +14,11 @@
 
 #ifndef LMSTRUCT_H
 #define LMSTRUCT_H
-#undef __BEGIN_DECLS
-#undef __END_DECLS
-#ifdef __cplusplus
-#define __BEGIN_DECLS extern "C" {
-#define __END_DECLS }
-#else
-#define __BEGIN_DECLS /* empty */
-#define __END_DECLS   /* empty */
-#endif
-__BEGIN_DECLS
 
-#if _WIN32
-#ifdef LMFIT_EXPORT
-#define LM_DLL __declspec(dllexport)
-#else
-#define LM_DLL __declspec(dllimport)
-#endif
-#else
-#define LM_DLL
-#endif
-
+#include "decls.h"
 #include <stdio.h>
+
+__BEGIN_DECLS
 
 /* Collection of input parameters for fit control. */
 typedef struct {
