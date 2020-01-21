@@ -12,7 +12,7 @@
  * Homepage:  apps.jcns.fz-juelich.de/lmfit
  */
 
-#ifndef LM_DLL
+#ifndef LM_DLL /* will be defined below */
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -22,7 +22,7 @@
 #else
 #define __BEGIN_DECLS /* empty */
 #define __END_DECLS   /* empty */
-#endif
+#endif /* __cplusplus */
 
 #if WIN32
 #ifdef LMFIT_EXPORT
@@ -32,6 +32,6 @@
 #endif
 #else
 #define LM_DLL
-#endif
+#endif /* WIN32 */
 
 #endif /* LM_DLL */
