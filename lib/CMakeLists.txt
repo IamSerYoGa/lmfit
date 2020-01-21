@@ -2,7 +2,7 @@ set(lib lmfit)
 set(${lib}_LIBRARY ${lib} PARENT_SCOPE)
 
 set(src_files lmcurve.c lmmin.c lminvert.c)
-set(inc_files lmcurve.h lmmin.h lmstruct.h)
+set(inc_files lmcurve.h lmmin.h lmstruct.h lmdecls.h)
 
 add_library(${lib} ${src_files})
 
