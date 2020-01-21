@@ -138,7 +138,7 @@ windows:
     # We need VS for the CMake option GNUtoMS
     - cmd.exe "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
     # We want to compile with MinGW. Somehow this is accomplished by Ninja.
-    - cmake -G "Ninja" -DLIB_MAN=OFF -DCMAKE_INSTALL_PREFIX=C:\opt\x64 -B. -Wl,-export-all-symbols -DCMAKE_GNUtoMS=ON ..
+    - cmake -G "Ninja" -DLIB_MAN=OFF -DCMAKE_INSTALL_PREFIX=C:\opt\x64 -B. -DCMAKE_GNUtoMS=ON ..
     - cmake --build . # --config Release
     - Get-Location
     - dir
