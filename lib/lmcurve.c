@@ -18,6 +18,7 @@
  * versions of lmcurve_data_struct, lmcurve_evaluate, and lmcurve of your own.
  */
 
+#include "lmcurve.h"
 #include "lmmin.h"
 
 

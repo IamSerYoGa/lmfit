@@ -34,4 +34,4 @@
 #define LM_DLL
 #endif
 
-#endif // LM_DLL
+#endif /* LM_DLL */

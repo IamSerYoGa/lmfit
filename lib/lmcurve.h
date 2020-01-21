@@ -22,7 +22,7 @@
 #ifndef LMCURVE_H
 #define LMCURVE_H
 
-#include<lmstruct.h>
+#include "lmstruct.h"
 
 __BEGIN_DECLS
 
