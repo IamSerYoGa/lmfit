@@ -140,6 +140,6 @@ windows:
     - cmake --build . # --config Release
     - Get-Location
     - dir
-    - dumpbin.exe /HEADERS lib\liblmfit.lib
+    # debug-only: - dumpbin.exe /HEADERS lib\liblmfit.lib
     - ctest --output-on-failure # -C Release
     - cmake --install .
