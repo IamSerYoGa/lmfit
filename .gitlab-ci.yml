@@ -140,6 +140,6 @@ windows:
     - cmake --build . # --config Release
     - Get-Location
     - dir
-    - C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/dumpbin.exe /HEADERS lib/liblmfit.lib
+    - '"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/dumpbin.exe" /HEADERS lib/liblmfit.lib'
     - ctest --output-on-failure # -C Release
     - cmake --install .
