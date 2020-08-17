@@ -137,3 +137,8 @@ windows:
     # debug-only: - dumpbin.exe /HEADERS lib\liblmfit.lib
     - ctest --output-on-failure # -C Release
     - cmake --install .
+    - cpack .
+  artifacts:
+    paths:
+    - "*zip"
+    expire_in: 10 days

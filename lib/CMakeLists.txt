@@ -27,3 +27,10 @@ install(
     FILES ${inc_files}
     DESTINATION ${destination}/include
     COMPONENT Headers)
+
+if(WIN32)
+    set(CPACK_PACKAGE_VENDOR "Forschungszentrum Jülich GmbH")
+    set(CPACK_GENERATOR "ZIP")
+    set(CPACK_PACKAGE_DIRECTORY ${CMAKE_SOURCE_DIR})
+    include(CPack)
+endif()
