@@ -452,7 +452,7 @@ void lmmin2(
                 goto terminate;
             }
             prered = temp1 + 2 * temp2;
-            dirder = -temp1 + temp2; /* scaled directional derivative */
+            dirder = -temp1 - temp2; /* scaled directional derivative */
 
             /* at first call, adjust the initial step bound. */
             if ( !outer && !inner && pnorm < delta )
