@@ -12,14 +12,12 @@
 #include <vector>
 
 extern "C" {
-  #include "lmdecls.h"
   #include "lmstruct.h"
   #include "lmmin.h"
   #include "lmcurve.h"
 //  #include "lmcurve_tyd.h"
 }
 #include <iostream>
-__BEGIN_DECLS
 
 namespace lmfit{
 
@@ -124,6 +122,5 @@ lm_result_struct lm_fit(const int n_par, std::vector<double>& start_par,
 
 } //namespace lmfit
 
-__END_DECLS
 
 #endif /* LMFIT_HPP */
