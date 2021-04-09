@@ -16,3 +16,22 @@ set_target_properties(
 
 target_include_directories(${cpplib} PRIVATE ${CMAKE_CURRENT_BINARY_DIR} ${lmfit_SOURCE_DIR}/lib)
 target_link_libraries(${cpplib} ${lmfit_LIBRARY})
+
+ install(
+     TARGETS ${cpplib}
+     LIBRARY DESTINATION ${destination}/lib
+     RUNTIME DESTINATION ${destination}/lib
+     ARCHIVE DESTINATION ${destination}/lib
+     COMPONENT Libraries)
+
+install(
+    FILES ${hpp_files}
+    DESTINATION ${destination}/include
+    COMPONENT Headers)
+
+if(WIN32)
+    set(CPACK_PACKAGE_VENDOR "Forschungszentrum Jülich GmbH")
+    set(CPACK_GENERATOR "ZIP")
+    set(CPACK_PACKAGE_DIRECTORY ${CMAKE_SOURCE_DIR})
+    include(CPack)
+endif()
