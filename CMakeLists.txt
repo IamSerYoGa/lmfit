@@ -16,10 +16,15 @@ if(NOT DEFINED LIB_MAN)
 endif()
 option(PEDANTIC "Compile with pedantic warnings" ON)
 option(WERROR "Treat warnings as errors" OFF)
+option(BUILD_CPP "Build with cpp wrapper and demos" ON)
 
 ## Compiler settings.
 
 set(CMAKE_C_STANDARD 99)
+
+if(BUILD_CPP)
+    set(CMAKE_CXX_STANDARD 17)
+endif()
 
 if(WIN32)
     set(CTEST_CONFIGURATION_TYPE "${JOB_BUILD_CONFIGURATION}")
@@ -50,8 +55,10 @@ include(CTest)
 add_subdirectory(lib)
 add_subdirectory(demo)
 add_subdirectory(test)
-add_subdirectory(cpplib)
-add_subdirectory(democpp)
+if(BUILD_CPP)
+    add_subdirectory(cpplib)
+    add_subdirectory(democpp)
+endif()
 if (LIB_MAN)
     add_subdirectory(man)
 endif()
