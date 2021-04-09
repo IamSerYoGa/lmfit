@@ -14,7 +14,7 @@ int main( int argc, char **argv)
     std::vector<double> p;
 
     lm_control_struct control = lm_control_double;
-    lm_status_struct status;
+    //lm_status_struct status;
     control.verbosity = 31;
 
     /* get start values from command line */
@@ -26,17 +26,19 @@ int main( int argc, char **argv)
     p.push_back( atof(argv[2]) );
 
     std::cout << "Minimization:" << '\n';
-    lmfit::lmmin_cpp(n, &p, n, NULL, NULL, evaluate_nonlin1, &control, &status);
+    //lmfit::lmmin_cpp(n, &p, n, NULL, NULL, evaluate_nonlin1, &control, &status);
+    auto result = lmfit::lm_min(n, p, n, NULL, &evaluate_nonlin1, &control);
 
-    std::cout << "\nlmmin status after " << status.nfev
+
+    std::cout << "\nlmmin status after " << result.status.nfev
         << " function evaluations:" << '\n';
-    std::cout << lm_infmsg[status.outcome] << '\n';
+    std::cout << lm_infmsg[result.status.outcome] << '\n';
 
     std::cout << '\n' << "Solution:\n";
-    std::cout << "  x = " << p[0] << '\n';
-    std::cout << "  y = " << p[1] << '\n';
-    std::cout << "  d = " << status.fnorm << " => ";
-    if (status.fnorm >= control.ftol)
+    std::cout << "  x = " << result.par[0] << '\n';
+    std::cout << "  y = " << result.par[1] << '\n';
+    std::cout << "  d = " << result.status.fnorm << " => ";
+    if (result.status.fnorm >= control.ftol)
         std::cout << "not a valid solution, try other starting values" << '\n';
     else
         std::cout << "valid, though not the only solution: try other starting values" << '\n';

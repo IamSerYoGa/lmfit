@@ -35,27 +35,29 @@ int main()
 
     data_struct data = {tx.data(), tz.data(), y.data(), f};
 
-    lm_status_struct status;
+    //lm_status_struct status;
     lm_control_struct control = lm_control_double;
     control.verbosity = 9;
 
     std::cout << "Fitting:" << '\n';
-    lmfit::lmmin_cpp(n_par, &par, m_dat, NULL, (const void*) &data,
-                     evaluate_surface, &control, &status);
+    //lmfit::lmmin_cpp(n_par, &par, m_dat, NULL, (const void*) &data,
+    //                 evaluate_surface, &control, &status);
+    auto result = lmfit::lm_min(n_par, par, m_dat, (const void*) &data,
+                                &evaluate_surface, &control);
 
     std::cout << "\nResults:" << '\n';
-    std::cout << "status after " << status.nfev
-              << " function evaluations:\n" << lm_infmsg[status.outcome]
+    std::cout << "status after " << result.status.nfev
+              << " function evaluations:\n" << lm_infmsg[result.status.outcome]
               << '\n';
     std::cout << "obtained parameters:" << '\n';
     int i;
     for (i = 0; i < n_par; ++i)
-        std::cout << "par[" << i << "] = " << par[i] << '\n';
+        std::cout << "par[" << i << "] = " << result.par[i] << '\n';
 
-    if (status.fnorm < 1e-14) {
-        std::cout << "SUCCESS (obtained norm = " << status.fnorm << ")\n";
+    if (result.status.fnorm < 1e-14) {
+        std::cout << "SUCCESS (obtained norm = " << result.status.fnorm << ")\n";
         return 0;
     }
-    std::cout << "FAILURE (obtained norm = " << status.fnorm << " is too large)\n";
+    std::cout << "FAILURE (obtained norm = " << result.status.fnorm << " is too large)\n";
     return 1;
 }
