@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.6 FATAL_ERROR)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 include(PreventInSourceBuilds)
 
+option(LMFIT_CPPTEST "Build lmfit cpp" ON)
+
 project(lmfit VERSION 8.2.1)
 
 ## Options.
@@ -16,13 +18,12 @@ if(NOT DEFINED LIB_MAN)
 endif()
 option(PEDANTIC "Compile with pedantic warnings" ON)
 option(WERROR "Treat warnings as errors" OFF)
-option(BUILD_CPP "Build with cpp wrapper and demos" ON)
 
 ## Compiler settings.
 
 set(CMAKE_C_STANDARD 99)
 
-if(BUILD_CPP)
+if(LMFIT_CPPTEST)
     set(CMAKE_CXX_STANDARD 17)
 endif()
 
@@ -55,7 +56,7 @@ include(CTest)
 add_subdirectory(lib)
 add_subdirectory(demo)
 add_subdirectory(test)
-if(BUILD_CPP)
+if(LMFIT_CPPTEST)
     add_subdirectory(cpplib)
     add_subdirectory(democpp)
 endif()
