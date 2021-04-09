@@ -5,7 +5,7 @@ set(hpp_files lmfit.hpp)
 
 add_library(${cpplib} ${hpp_files})
 
-target_include_directories(${cpplib} PRIVATE ${CMAKE_CURRENT_BINARY_DIR} ${lmfit_SOURCE_DIR}/lib)
+target_include_directories(${cpplib} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_SOURCE_DIR}/lib)
 target_link_libraries(${cpplib} ${lmfit_LIBRARY})
 
 target_compile_definitions(${cpplib} PRIVATE "LMFIT_EXPORT")
