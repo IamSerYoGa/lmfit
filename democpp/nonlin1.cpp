@@ -10,11 +10,9 @@ void evaluate_nonlin1(
 
 int main( int argc, char **argv)
 {
-    int n = 2;
     std::vector<double> p;
 
     lm_control_struct control = lm_control_double;
-    //lm_status_struct status;
     control.verbosity = 31;
 
     /* get start values from command line */
@@ -26,8 +24,7 @@ int main( int argc, char **argv)
     p.push_back( atof(argv[2]) );
 
     std::cout << "Minimization:" << '\n';
-    //lmfit::lmmin_cpp(n, &p, n, NULL, NULL, evaluate_nonlin1, &control, &status);
-    auto result = lmfit::lm_min(n, p, n, NULL, &evaluate_nonlin1, &control);
+    auto result = lmfit::minimize(p, NULL, 2, &evaluate_nonlin1, &control);
 
 
     std::cout << "\nlmmin status after " << result.status.nfev

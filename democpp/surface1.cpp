@@ -25,7 +25,6 @@ void evaluate_surface(const double *par, int m_dat, const void *data,
 
 int main()
 {
-    int n_par = 3;
     std::vector<double> par{ -1, 0, 1 };
 
     int m_dat = 4;
@@ -35,14 +34,11 @@ int main()
 
     data_struct data = {tx.data(), tz.data(), y.data(), f};
 
-    //lm_status_struct status;
     lm_control_struct control = lm_control_double;
     control.verbosity = 9;
 
     std::cout << "Fitting:" << '\n';
-    //lmfit::lmmin_cpp(n_par, &par, m_dat, NULL, (const void*) &data,
-    //                 evaluate_surface, &control, &status);
-    auto result = lmfit::lm_min(n_par, par, m_dat, (const void*) &data,
+    auto result = lmfit::minimize(par, (const void*) &data, m_dat,
                                 &evaluate_surface, &control);
 
     std::cout << "\nResults:" << '\n';
@@ -51,7 +47,7 @@ int main()
               << '\n';
     std::cout << "obtained parameters:" << '\n';
     int i;
-    for (i = 0; i < n_par; ++i)
+    for (i = 0; i < par.size(); ++i)
         std::cout << "par[" << i << "] = " << result.par[i] << '\n';
 
     if (result.status.fnorm < 1e-14) {

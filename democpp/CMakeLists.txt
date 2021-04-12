@@ -1,10 +1,10 @@
 set(cppdemos
-curve1cpp
-nonlin1cpp
-surface1cpp)
+curve1
+nonlin1
+surface1)
 
 foreach(app ${cppdemos})
-    add_executable(${app} ${app}.cpp)
-    target_include_directories(${app} PRIVATE ${CMAKE_CURRENT_BINARY_DIR} ${lmfit_SOURCE_DIR}/cpplib)
-    target_link_libraries(${app} ${lmfitcpp_LIBRARY})
+    add_executable(${app}cpp ${app}.cpp)
+    target_include_directories(${app}cpp PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${lmfit_SOURCE_DIR}/lib)
+    target_link_libraries(${app}cpp ${lmfit_LIBRARY})
 endforeach()
