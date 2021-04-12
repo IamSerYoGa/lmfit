@@ -21,7 +21,7 @@ int main()
 
     std::cout << "Results:" << '\n';
     std::cout << "status after " << result.status.nfev
-        << " function evaluations:" << '\n';
+              << " function evaluations:" << '\n';
     std::cout << lm_infmsg[result.status.outcome] << '\n';
 
     std::cout << "Obtained parameters:" << '\n';

@@ -21,9 +21,9 @@
 #include <cassert>
 
 extern "C" {
-  #include "lmstruct.h"
-  #include "lmmin.h"
-  #include "lmcurve.h"
+#include "lmstruct.h"
+#include "lmmin.h"
+#include "lmcurve.h"
 }
 
 namespace lmfit{
@@ -39,12 +39,12 @@ struct result_t {
 };
 
 result_t minimize(std::vector<double>& start_par,
-                        const void *const data, const int m_dat,
-                        void (*const evaluate)(
-                            const double *const par, const int m_dat,
-                            const void *const data, double *const fvec,
-                            int *const userbreak),
-                        const lm_control_struct& control)
+                  const void *const data, const int m_dat,
+                  void (*const evaluate)(
+                      const double *const par, const int m_dat,
+                      const void *const data, double *const fvec,
+                      int *const userbreak),
+                  const lm_control_struct& control)
 {
     result_t res(start_par);
 
@@ -56,12 +56,12 @@ result_t minimize(std::vector<double>& start_par,
 }
 
 result_t fit(std::vector<double>& start_par,
-                     std::vector<double>& y, const void *const data,
-                     void (*const evaluate)(
-                            const double *const par, const int m_dat,
-                            const void *const data,
-                            double *const fvec, int *const userbreak),
-                     const lm_control_struct& control)
+             std::vector<double>& y, const void *const data,
+             void (*const evaluate)(
+                 const double *const par, const int m_dat,
+                 const void *const data,
+                 double *const fvec, int *const userbreak),
+             const lm_control_struct& control)
 {
     result_t res(start_par);
 
@@ -73,9 +73,9 @@ result_t fit(std::vector<double>& start_par,
 }
 
 result_t fit_curve(std::vector<double>& par,
-                    const std::vector<double>& t, const std::vector<double>& y,
-                    double (*g)(const double t, const double* par),
-                    const lm_control_struct& control)
+                   const std::vector<double>& t, const std::vector<double>& y,
+                   double (*g)(const double t, const double* par),
+                   const lm_control_struct& control)
 {
     assert(t.size() == y.size());
 

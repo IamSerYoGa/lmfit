@@ -27,7 +27,7 @@ int main( int argc, char **argv)
     auto result = lmfit::minimize(par0, nullptr, 2, &evaluate_nonlin1, control);
 
     std::cout << "\nlmmin status after " << result.status.nfev
-        << " function evaluations:" << '\n';
+              << " function evaluations:" << '\n';
     std::cout << lm_infmsg[result.status.outcome] << '\n';
 
     std::cout << '\n' << "Solution:\n";
