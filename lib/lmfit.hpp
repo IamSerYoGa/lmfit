@@ -1,8 +1,16 @@
 /*
- * lmfit cpp wrapper
+ * Library:   lmfit (Levenberg-Marquardt least squares fitting)
  *
- * Methods: minimize, fit, fit_curve
+ * File:      lmfit.hpp
  *
+ * Contents:  C++ wrappers for minimization and fitting
+ *
+ * Copyright: Joachim Wuttke, Janike Katter
+ *            Forschungszentrum Juelich GmbH (2021)
+ *
+ * License:   see ../COPYING (FreeBSD)
+ *
+ * Homepage:  apps.jcns.fz-juelich.de/lmfit
  */
 
 #ifndef LMFIT_HPP
@@ -69,10 +77,12 @@ result_t fit_curve(std::vector<double>& par,
                     double (*g)(const double t, const double* par),
                     const lm_control_struct& control)
 {
-    assert (t.size() == y.size());
+    assert(t.size() == y.size());
+
     result_t res(par);
     lmcurve(par.size(), res.par.data(), t.size(), t.data(), y.data(), g,
             &control, &res.status);
+
     return res;
 }
 
