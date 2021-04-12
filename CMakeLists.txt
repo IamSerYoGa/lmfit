@@ -3,9 +3,13 @@ cmake_minimum_required(VERSION 3.6 FATAL_ERROR)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 include(PreventInSourceBuilds)
 
-option(LMFIT_CPPTEST "Build lmfit cpp" ON)
+option(LMFIT_CPPTEST "Build cpp demos" ON)
 
-project(lmfit VERSION 8.2.1)
+if(LMFIT_CPPTEST)
+    project(lmfit VERSION 8.2.1)
+else()
+    project(lmfit VERSION 8.2.1 LANGUAGES C)
+endif()
 
 ## Options.
 
@@ -57,7 +61,6 @@ add_subdirectory(lib)
 add_subdirectory(demo)
 add_subdirectory(test)
 if(LMFIT_CPPTEST)
-    add_subdirectory(cpplib)
     add_subdirectory(democpp)
 endif()
 if (LIB_MAN)
