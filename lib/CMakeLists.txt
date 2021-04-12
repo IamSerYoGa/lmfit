@@ -27,6 +27,10 @@ install(
     FILES ${inc_files}
     DESTINATION ${destination}/include
     COMPONENT Headers)
+install(
+    FILES lmfit.hpp
+    DESTINATION ${destination}/include
+    COMPONENT Headers)
 
 if(WIN32)
     set(CPACK_PACKAGE_VENDOR "Forschungszentrum Jülich GmbH")
