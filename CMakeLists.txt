@@ -3,7 +3,13 @@ cmake_minimum_required(VERSION 3.6 FATAL_ERROR)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 include(PreventInSourceBuilds)
 
-project(lmfit VERSION 8.2.1 LANGUAGES C)
+option(LMFIT_CPPTEST "Build cpp demos" ON)
+
+if(LMFIT_CPPTEST)
+    project(lmfit VERSION 8.2.1 LANGUAGES C CXX)
+else()
+    project(lmfit VERSION 8.2.1 LANGUAGES C)
+endif()
 
 ## Options.
 
@@ -20,6 +26,9 @@ option(WERROR "Treat warnings as errors" OFF)
 ## Compiler settings.
 
 set(CMAKE_C_STANDARD 99)
+if(LMFIT_CPPTEST)
+    set(CMAKE_CXX_STANDARD 17)
+endif()
 
 if(WIN32)
     set(CTEST_CONFIGURATION_TYPE "${JOB_BUILD_CONFIGURATION}")
@@ -50,6 +59,9 @@ include(CTest)
 add_subdirectory(lib)
 add_subdirectory(demo)
 add_subdirectory(test)
+if(LMFIT_CPPTEST)
+    add_subdirectory(democpp)
+endif()
 if (LIB_MAN)
     add_subdirectory(man)
 endif()
