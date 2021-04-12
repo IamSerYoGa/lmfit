@@ -22,17 +22,17 @@ double f(double tx, double tz, const double *p)
     return p[0] + p[1]*tx + p[2]*tz;
 }
 
-typedef struct {
+struct data_t {
     const double *tx;
     const double *tz;
     const double *y;
     double (*const f)(double tx, double tz, const double *p);
-} data_struct;
+};
 
 void evaluate_surface(const double *par, int m_dat, const void *data,
                       double *fvec, int *info)
 {
-    data_struct *D = (data_struct*)data;
+    data_t *D = (data_t*)data;
 
     for (int i = 0; i < m_dat; i++)
         fvec[i] = D->y[i] - D->f(D->tx[i], D->tz[i], par);
@@ -49,7 +49,7 @@ int main()
     assert((int) tx.size() == m_dat);
     assert((int) tz.size() == m_dat);
 
-    const data_struct data = {tx.data(), tz.data(), y.data(), f};
+    const data_t data = {tx.data(), tz.data(), y.data(), f};
 
     lm_control_struct control = lm_control_double;
     control.verbosity = 9;
