@@ -10,7 +10,7 @@ void evaluate_nonlin1(
 
 int main( int argc, char **argv)
 {
-    std::vector<double> p;
+    std::vector<double> par0;
 
     lm_control_struct control = lm_control_double;
     control.verbosity = 31;
@@ -20,12 +20,11 @@ int main( int argc, char **argv)
         std::cout << "usage: nonlin1cpp x_start y_start" << '\n';
         exit(-1);
     }
-    p.push_back( atof(argv[1]) );
-    p.push_back( atof(argv[2]) );
+    par0.push_back( atof(argv[1]) );
+    par0.push_back( atof(argv[2]) );
 
     std::cout << "Minimization:" << '\n';
-    auto result = lmfit::minimize(p, NULL, 2, &evaluate_nonlin1, &control);
-
+    auto result = lmfit::minimize(par0, nullptr, 2, &evaluate_nonlin1, &control);
 
     std::cout << "\nlmmin status after " << result.status.nfev
         << " function evaluations:" << '\n';

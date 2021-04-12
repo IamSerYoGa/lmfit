@@ -8,7 +8,7 @@ double f(const double t, const double* p)
 
 int main()
 {
-    std::vector<double> par{ 100, 0, -10 };
+    std::vector<double> par0{ 100, 0, -10 };
 
     std::vector<double> t{ -4., -3., -2., -1.,  0., 1.,  2.,  3.,  4. };
     std::vector<double> y{ 16.6, 9.9, 4.4, 1.1, 0., 1.1, 4.2, 9.3, 16.4 };
@@ -17,7 +17,7 @@ int main()
     control.verbosity = 9;
 
     std::cout << "Fitting..." << '\n';
-    auto result = lmfit::fit_curve(par, t, y, &f, &control);
+    auto result = lmfit::fit_curve(par0, t, y, &f, &control);
 
     std::cout << "Results:" << '\n';
     std::cout << "status after " << result.status.nfev
@@ -25,7 +25,7 @@ int main()
     std::cout << lm_infmsg[result.status.outcome] << '\n';
 
     std::cout << "Obtained parameters:" << '\n';
-    for (size_t j = 0; j < par.size(); ++j)
+    for (size_t j = 0; j < result.par.size(); ++j)
         std::cout << "par[" << j << "] = " << result.par[j] << '\n';
     std::cout << "Obtained norm:" << '\n';
     std::cout << result.status.fnorm << '\n';
@@ -34,10 +34,10 @@ int main()
     for (size_t i = 0; i < t.size(); ++i)
         std::cout << "t[" << i << "]= " << t[i] << '\n';
 
-    if (result.status.outcome <= 3) {
-        std::cout << "SUCCESS" << '\n';
-        return 0;
+    if (result.status.outcome > 3) {
+        std::cout << "FAILURE" << '\n';
+        return 1;
     }
-    std::cout << "FAILURE" << '\n';
-    return 1;
+    std::cout << "SUCCESS" << '\n';
+    return 0;
 }
