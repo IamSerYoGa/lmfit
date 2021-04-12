@@ -25,9 +25,9 @@ typedef struct lm_result_struct{
     std::vector<double> parerr;
     std::vector<double> covar;
     lm_status_struct status;
-    lm_result_struct(std::vector<double>& start_par)
-        : par(start_par), parerr(std::vector<double>(start_par.size())),
-        covar(std::vector<double>(start_par.size()*start_par.size())) {}
+    lm_result_struct(std::vector<double>& p0)
+        : par(p0), parerr(std::vector<double>(p0.size())),
+        covar(std::vector<double>(p0.size()*p0.size())) {}
 } lm_result_struct;
 
 lm_result_struct fit_curve(std::vector<double>& par,
@@ -36,7 +36,7 @@ lm_result_struct fit_curve(std::vector<double>& par,
                     const lm_control_struct* control)
 {
     assert (t.size() == y.size());
-    lm_result_struct res = lm_result_struct(par);
+    lm_result_struct res(par);
     lmcurve(par.size(), res.par.data(), t.size(), t.data(), y.data(),
             g, control, &res.status);
     return res;
@@ -50,7 +50,7 @@ lm_result_struct minimize(std::vector<double>& start_par,
                             int *const userbreak),
                         const lm_control_struct *const control)
 {
-    lm_result_struct res = lm_result_struct(start_par);
+    lm_result_struct res(start_par);
 
     lmmin2(start_par.size(), res.par.data(), res.parerr.data(),
            res.covar.data(), m_dat, NULL, data, evaluate, control, &res.status);
@@ -66,7 +66,7 @@ lm_result_struct fit(std::vector<double>& start_par,
                             double *const fvec, int *const userbreak),
                      const lm_control_struct *const control)
 {
-    lm_result_struct res = lm_result_struct(start_par);
+    lm_result_struct res(start_par);
 
     lmmin2(start_par.size(), res.par.data(), res.parerr.data(),
            res.covar.data(), y.size(), y.data(), data, evaluate, control,
