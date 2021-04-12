@@ -36,12 +36,12 @@ lm_result_struct minimize(std::vector<double>& start_par,
                             const double *const par, const int m_dat,
                             const void *const data, double *const fvec,
                             int *const userbreak),
-                        const lm_control_struct *const control)
+                        const lm_control_struct& control)
 {
     lm_result_struct res(start_par);
 
     lmmin2(start_par.size(), res.par.data(), res.parerr.data(),
-           res.covar.data(), m_dat, nullptr, data, evaluate, control, &res.status);
+           res.covar.data(), m_dat, nullptr, data, evaluate, &control, &res.status);
 
     return res;
 }
@@ -52,12 +52,12 @@ lm_result_struct fit(std::vector<double>& start_par,
                             const double *const par, const int m_dat,
                             const void *const data,
                             double *const fvec, int *const userbreak),
-                     const lm_control_struct *const control)
+                     const lm_control_struct& control)
 {
     lm_result_struct res(start_par);
 
     lmmin2(start_par.size(), res.par.data(), res.parerr.data(),
-           res.covar.data(), y.size(), y.data(), data, evaluate, control,
+           res.covar.data(), y.size(), y.data(), data, evaluate, &control,
            &res.status);
 
     return res;
@@ -66,12 +66,12 @@ lm_result_struct fit(std::vector<double>& start_par,
 lm_result_struct fit_curve(std::vector<double>& par,
                     const std::vector<double>& t, const std::vector<double>& y,
                     double (*g)(const double t, const double* par),
-                    const lm_control_struct* control)
+                    const lm_control_struct& control)
 {
     assert (t.size() == y.size());
     lm_result_struct res(par);
     lmcurve(par.size(), res.par.data(), t.size(), t.data(), y.data(),
-            g, control, &res.status);
+            g, &control, &res.status);
     return res;
 }
 

@@ -39,7 +39,7 @@ int main()
     control.verbosity = 9;
 
     std::cout << "Fitting:" << '\n';
-    auto result = lmfit::minimize(par0, (const void*) &data, m_dat, &evaluate_surface, &control);
+    auto result = lmfit::minimize(par0, (const void*) &data, m_dat, &evaluate_surface, control);
 
     std::cout << "\nResults:" << '\n';
     std::cout << "status after " << result.status.nfev

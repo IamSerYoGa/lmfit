@@ -17,7 +17,7 @@ int main()
     control.verbosity = 9;
 
     std::cout << "Fitting..." << '\n';
-    auto result = lmfit::fit_curve(par0, t, y, &f, &control);
+    auto result = lmfit::fit_curve(par0, t, y, &f, control);
 
     std::cout << "Results:" << '\n';
     std::cout << "status after " << result.status.nfev

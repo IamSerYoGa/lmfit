@@ -21,8 +21,9 @@ __BEGIN_DECLS
 
 /* Levenberg-Marquardt minimization. */
 LM_DLL void lmmin2(
-    const int n_par, double *const par, double *const parerr, double *const covar,
-    const int m_dat, const double *const y, const void *const data,
+    const int n_par, double *const par, double *const parerr,
+    double *const covar, const int m_dat, const double *const y,
+    const void *const data,
     void (*const evaluate)(
         const double *const par, const int m_dat, const void *const data,
         double *const fvec, int *const userbreak),

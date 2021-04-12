@@ -24,7 +24,7 @@ int main( int argc, char **argv)
     par0.push_back( atof(argv[2]) );
 
     std::cout << "Minimization:" << '\n';
-    auto result = lmfit::minimize(par0, nullptr, 2, &evaluate_nonlin1, &control);
+    auto result = lmfit::minimize(par0, nullptr, 2, &evaluate_nonlin1, control);
 
     std::cout << "\nlmmin status after " << result.status.nfev
         << " function evaluations:" << '\n';
