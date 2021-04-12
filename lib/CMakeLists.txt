@@ -2,7 +2,7 @@ set(lib lmfit)
 set(${lib}_LIBRARY ${lib} PARENT_SCOPE)
 
 set(src_files lmcurve.c lmmin.c lminvert.c)
-set(inc_files lmcurve.h lmmin.h lmstruct.h lmdecls.h)
+set(inc_files lmcurve.h lmmin.h lmstruct.h lmdecls.h lmfit.hpp)
 
 add_library(${lib} ${src_files})
 
@@ -25,10 +25,6 @@ install(
     COMPONENT Libraries)
 install(
     FILES ${inc_files}
-    DESTINATION ${destination}/include
-    COMPONENT Headers)
-install(
-    FILES lmfit.hpp
     DESTINATION ${destination}/include
     COMPONENT Headers)
 

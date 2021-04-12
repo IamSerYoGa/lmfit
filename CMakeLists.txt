@@ -6,7 +6,7 @@ include(PreventInSourceBuilds)
 option(LMFIT_CPPTEST "Build cpp demos" ON)
 
 if(LMFIT_CPPTEST)
-    project(lmfit VERSION 8.2.1)
+    project(lmfit VERSION 8.2.1 LANGUAGES C CXX)
 else()
     project(lmfit VERSION 8.2.1 LANGUAGES C)
 endif()
@@ -26,7 +26,6 @@ option(WERROR "Treat warnings as errors" OFF)
 ## Compiler settings.
 
 set(CMAKE_C_STANDARD 99)
-
 if(LMFIT_CPPTEST)
     set(CMAKE_CXX_STANDARD 17)
 endif()

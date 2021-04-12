@@ -26,12 +26,8 @@ typedef struct lm_result_struct{
     std::vector<double> covar;
     lm_status_struct status;
     lm_result_struct(std::vector<double>& start_par)
-    {
-        par = start_par;
-        int n = par.size();
-        parerr = std::vector<double>(n);
-        covar = std::vector<double>(n*n);
-    }
+        : par(start_par), parerr(std::vector<double>(start_par.size())),
+        covar(std::vector<double>(start_par.size()*start_par.size())) {}
 } lm_result_struct;
 
 lm_result_struct fit_curve(std::vector<double>& par,
