@@ -39,7 +39,8 @@ int main()
     control.verbosity = 9;
 
     std::cout << "Fitting:" << '\n';
-    auto result = lmfit::minimize(par0, (const void*) &data, m_dat, &evaluate_surface, control);
+    auto result = lmfit::minimize(par0, (const void*) &data, m_dat,
+                                  &evaluate_surface, control);
 
     std::cout << "\nResults:" << '\n';
     std::cout << "status after " << result.status.nfev
@@ -50,7 +51,8 @@ int main()
         std::cout << "par[" << j << "] = " << result.par[j] << '\n';
 
     if (result.status.fnorm > 1e-14) {
-        std::cout << "FAILURE (obtained norm = " << result.status.fnorm << " is too large)\n";
+        std::cout << "FAILURE (obtained norm = " << result.status.fnorm
+                  << " is too large)\n";
         return 1;
     }
     std::cout << "SUCCESS (obtained norm = " << result.status.fnorm << ")\n";

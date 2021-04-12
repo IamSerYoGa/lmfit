@@ -62,7 +62,7 @@ int test(int n, double* A, int expect_singular)
     show_matrix("Ainv*A", UL, n);
     show_matrix("A*Ainv", UR, n);
     int err = 0;
-    const double eps0 = 1e-13; // confirmed to work on amd64, ppc64le, aarch64, s390x
+    const double eps0 = 1e-13; // works on amd64, ppc64le, aarch64, s390x
     const double eps1 = eps0;
     for (int i=0; i<n; ++i) {
         for (int j=0; j<n; ++j) {

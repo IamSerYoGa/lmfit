@@ -42,7 +42,7 @@ void evaluate_surface( const double *par, int m_dat, const void *data,
 
     int i;
     for ( i = 0; i < m_dat; i++ )
-	fvec[i] = D->y[i] - D->f( D->tx[i], D->tz[i], par );
+        fvec[i] = D->y[i] - D->f( D->tx[i], D->tz[i], par );
 }
 
 int main()
@@ -77,7 +77,7 @@ int main()
     printf("obtained parameters:\n");
     int i;
     for ( i=0; i<n_par; ++i )
-	printf("  par[%i] = %12g\n", i, par[i]);
+        printf("  par[%i] = %12g\n", i, par[i]);
 
     printf("fitting data as follows:\n");
     double ff;

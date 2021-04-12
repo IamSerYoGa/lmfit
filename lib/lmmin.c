@@ -219,9 +219,8 @@ void lmmin2(
 /***  Allocate work space.  ***/
 
     /* Allocate total workspace with just one system call */
-    char *ws;
-    if ( ( ws = malloc(
-               (2*m+5*n+m*n+3*n*n)*sizeof(double) + n*sizeof(int) ) ) == NULL ) {
+    char *ws = malloc((2*m+5*n+m*n+3*n*n)*sizeof(double) + n*sizeof(int));
+    if (ws  == NULL) {
         S->outcome = 9;
         return;
     }
@@ -474,10 +473,10 @@ void lmmin2(
 /***  [inner]  Evaluate the scaled reduction.  ***/
 
             /* actual scaled reduction (supports even the case fnorm1=infty) */
-	    if (p1 * fnorm1 < fnorm)
-		actred = 1 - SQR(fnorm1 / fnorm);
-	    else
-		actred = -1;
+            if (p1 * fnorm1 < fnorm)
+                actred = 1 - SQR(fnorm1 / fnorm);
+            else
+                actred = -1;
 
             /* ratio of actual to predicted reduction */
             ratio = prered ? actred/prered : 0;
@@ -502,19 +501,19 @@ void lmmin2(
             }
 
             /* update the step bound */
-	    if (ratio <= 0.25) {
-		if (actred >= 0)
-		    temp = 0.5;
-		else
-		    temp = 0.5 * dirder / (dirder + 0.5 * actred);
-		if (p1 * fnorm1 >= fnorm || temp < p1)
-		    temp = p1;
-		delta = temp * MIN(delta, pnorm / p1);
-		lmpar /= temp;
-	    } else if (lmpar == 0 || ratio >= 0.75) {
-		delta = 2 * pnorm;
-		lmpar *= 0.5;
-	    }
+            if (ratio <= 0.25) {
+                if (actred >= 0)
+                    temp = 0.5;
+                else
+                    temp = 0.5 * dirder / (dirder + 0.5 * actred);
+                if (p1 * fnorm1 >= fnorm || temp < p1)
+                    temp = p1;
+                delta = temp * MIN(delta, pnorm / p1);
+                lmpar /= temp;
+            } else if (lmpar == 0 || ratio >= 0.75) {
+                delta = 2 * pnorm;
+                lmpar *= 0.5;
+            }
 
 /***  [inner]  On success, update solution, and test for convergence.  ***/
 

@@ -37,7 +37,8 @@ int main( int argc, char **argv)
     if (result.status.fnorm >= control.ftol)
         std::cout << "not a valid solution, try other starting values" << '\n';
     else
-        std::cout << "valid, though not the only solution: try other starting values" << '\n';
+        std::cout << "valid, though not the only solution:"
+                  << " try other starting values" << '\n';
 
     return 0;
 }

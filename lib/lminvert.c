@@ -20,7 +20,8 @@
 
 void lm_decompose_LUP(double *const A, const int n, const double Tol,
                       int *const P, int*const  failure);
-void lm_invert_LUP(double *const A, const int n, int *const P, double *const IA);
+void lm_invert_LUP(double *const A, const int n, int *const P,
+                   double *const IA);
 void lm_check_inverse(double *const A, double *const IA, const int n,
                       const double Tol, int*const  failure);
 
@@ -125,7 +126,8 @@ void lm_check_inverse(double *const A, double *const IA, const int n,
                 s += IA[j*n+k] * A[k*n+i];
             double expected = (i==j) ? 1. : 0.;
             if (fabs(s-expected)>Tol) {
-                fprintf(stderr, "lm_check_inverse found %g instead of %g at %i,%i \n",
+                fprintf(stderr,
+                        "lm_check_inverse found %g instead of %g at %i,%i \n",
                         s, expected, j, i);
                 *failure = 22;
                 return;

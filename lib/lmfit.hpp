@@ -41,7 +41,8 @@ lm_result_struct minimize(std::vector<double>& start_par,
     lm_result_struct res(start_par);
 
     lmmin2(start_par.size(), res.par.data(), res.parerr.data(),
-           res.covar.data(), m_dat, nullptr, data, evaluate, &control, &res.status);
+           res.covar.data(), m_dat, nullptr, data, evaluate, &control,
+           &res.status);
 
     return res;
 }
@@ -70,8 +71,8 @@ lm_result_struct fit_curve(std::vector<double>& par,
 {
     assert (t.size() == y.size());
     lm_result_struct res(par);
-    lmcurve(par.size(), res.par.data(), t.size(), t.data(), y.data(),
-            g, &control, &res.status);
+    lmcurve(par.size(), res.par.data(), t.size(), t.data(), y.data(), g,
+            &control, &res.status);
     return res;
 }
 

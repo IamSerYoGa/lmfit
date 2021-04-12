@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <getopt.h> // for getopt(3), compare https://bugzilla.kernel.org/show_bug.cgi?id=197375
+#include <getopt.h>
+   // for getopt(3), compare https://bugzilla.kernel.org/show_bug.cgi?id=197375
 
 #include "fittest.h"
 #include "lmmin.h"
@@ -20,7 +21,8 @@ void evaluate(
     (*f)(x, m, fvec);
 }
 
-void minimizer(int n, double* x, int m, double* y, ffunc_type f, int* outcome, int* nfev)
+void minimizer(int n, double* x, int m, double* y, ffunc_type f, int* outcome,
+               int* nfev)
 {
     lm_status_struct status;
     eval_data_struct edata;
