@@ -9,7 +9,7 @@
  *
  * License:   see ../COPYING (FreeBSD)
  *
- * Homepage:  apps.jcns.fz-juelich.de/lmfit
+ * Homepage:  https://jugit.fz-juelich.de/mlz/lmfit
  */
 
 #ifndef LM_DLL /* will be defined below */

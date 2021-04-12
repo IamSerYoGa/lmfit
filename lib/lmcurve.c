@@ -10,7 +10,7 @@
  *
  * License:   see ../COPYING (FreeBSD)
  *
- * Homepage:  apps.jcns.fz-juelich.de/lmfit
+ * Homepage:  https://jugit.fz-juelich.de/mlz/lmfit
  *
  * Note to programmers: Don't patch and fork, but copy and modify!
  *   If you need to compute residues differently, then please do not patch

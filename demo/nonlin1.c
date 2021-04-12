@@ -12,7 +12,7 @@
  *
  * Licence:  see ../COPYING (FreeBSD)
  *
- * Homepage: apps.jcns.fz-juelich.de/lmfit
+ * Homepage: https://jugit.fz-juelich.de/mlz/lmfit
  */
 
 #include "lmmin.h"
