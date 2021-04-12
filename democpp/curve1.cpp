@@ -10,7 +10,6 @@ int main()
 {
     std::vector<double> par{ 100, 0, -10 };
 
-    int i;
     std::vector<double> t{ -4., -3., -2., -1.,  0., 1.,  2.,  3.,  4. };
     std::vector<double> y{ 16.6, 9.9, 4.4, 1.1, 0., 1.1, 4.2, 9.3, 16.4 };
 
@@ -26,15 +25,14 @@ int main()
     std::cout << lm_infmsg[result.status.outcome] << '\n';
 
     std::cout << "Obtained parameters:" << '\n';
-    for (i = 0; i < par.size(); ++i)
-        std::cout << "par[" << i << "] = " << result.par[i] << '\n';
+    for (size_t j = 0; j < par.size(); ++j)
+        std::cout << "par[" << j << "] = " << result.par[j] << '\n';
     std::cout << "Obtained norm:" << '\n';
     std::cout << result.status.fnorm << '\n';
 
     std::cout << "fitting data as follows:" << '\n';
-    for (i = 0; i < t.size(); ++i) {
+    for (size_t i = 0; i < t.size(); ++i)
         std::cout << "t[" << i << "]= " << t[i] << '\n';
-    }
 
     if (result.status.outcome <= 3) {
         std::cout << "SUCCESS" << '\n';

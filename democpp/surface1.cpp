@@ -46,9 +46,8 @@ int main()
               << " function evaluations:\n" << lm_infmsg[result.status.outcome]
               << '\n';
     std::cout << "obtained parameters:" << '\n';
-    int i;
-    for (i = 0; i < par.size(); ++i)
-        std::cout << "par[" << i << "] = " << result.par[i] << '\n';
+    for (size_t j = 0; j < par.size(); ++j)
+        std::cout << "par[" << j << "] = " << result.par[j] << '\n';
 
     if (result.status.fnorm < 1e-14) {
         std::cout << "SUCCESS (obtained norm = " << result.status.fnorm << ")\n";

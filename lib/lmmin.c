@@ -210,7 +210,7 @@ void lmmin2(
         return;
     }
     if (C->scale_diag != 0 && C->scale_diag != 1) {
-        fprintf(stderr, "lmmin: logical variable scale_diag=%i, "
+        fprintf(stderr, "lmmin: control parameter scale_diag=%i, "
                 "should be 0 or 1\n", C->scale_diag);
         S->outcome = 10;
         return;
