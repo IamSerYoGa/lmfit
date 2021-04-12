@@ -1,3 +1,19 @@
+/*
+ * Library:  lmfit (Levenberg-Marquardt least squares fitting)
+ *
+ * File:     democpp/nonlin1.cpp
+ *
+ * Contents: Example for the solution of 2 nonlinear equations in 2 variables.
+ *           Find the intersection of a circle and a parabola.
+ *
+ * Copyright: Janike Katter, Joachim Wuttke
+ *            Forschungszentrum Juelich GmbH (2021)
+ *
+ * Licence:  see ../COPYING (FreeBSD)
+ *
+ * Homepage: https://jugit.fz-juelich.de/mlz/lmfit
+ */
+
 #include "lmfit.hpp"
 #include <iostream>
 

@@ -1,3 +1,19 @@
+/*
+ * Library:  lmfit (Levenberg-Marquardt least squares fitting)
+ *
+ * File:     democpp/curve1.cpp
+ *
+ * Contents: Example for curve fitting with lmcurve():
+ *           fit a data set y(x) by a curve f(x;p).
+ *
+ * Copyright: Janike Katter, Joachim Wuttke
+ *            Forschungszentrum Juelich GmbH (2021)
+ *
+ * Licence:  see ../COPYING (FreeBSD)
+ *
+ * Homepage: https://jugit.fz-juelich.de/mlz/lmfit
+ */
+
 #include "lmfit.hpp"
 #include <iostream>
 

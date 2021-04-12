@@ -1,3 +1,19 @@
+/*
+ * Library:  lmfit (Levenberg-Marquardt least squares fitting)
+ *
+ * File:     democpp/surface1.cpp
+ *
+ * Contents: Example for generic minimization with lmmin():
+             fit data y(t) by a function f(t;p), where t is a 2-vector.
+ *
+ * Copyright: Janike Katter, Joachim Wuttke
+ *            Forschungszentrum Juelich GmbH (2021)
+ *
+ * Licence:  see ../COPYING (FreeBSD)
+ *
+ * Homepage: https://jugit.fz-juelich.de/mlz/lmfit
+ */
+
 #include "lmfit.hpp"
 #include <iostream>
 
