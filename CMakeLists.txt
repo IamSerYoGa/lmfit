@@ -22,6 +22,7 @@ if(NOT DEFINED LIB_MAN)
 endif()
 option(PEDANTIC "Compile with pedantic warnings" ON)
 option(WERROR "Treat warnings as errors" OFF)
+option(PYLMFIT "Build python bindings with Swig" ON)
 
 ## Compiler settings.
 
@@ -54,6 +55,9 @@ configure_file("lmfit.pc.in" "lmfit.pc" @ONLY)
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lmfit.pc"
     DESTINATION "${destination}/lib/pkgconfig/")
 
+if(PYLMFIT)
+    include(CheckDependencies)
+endif()
 include(CTest)
 
 add_subdirectory(lib)
@@ -61,6 +65,9 @@ add_subdirectory(demo)
 add_subdirectory(test)
 if(LMFIT_CPPTEST)
     add_subdirectory(democpp)
+endif()
+if (PYLMFIT)
+    add_subdirectory(swig)
 endif()
 if (LIB_MAN)
     add_subdirectory(man)
